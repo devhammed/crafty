@@ -97,10 +97,34 @@ public class Scanner {
             case '\n':
                 line++;
                 break;
+            case '"':
+                string();
+                break;
             default:
                 Crafty.error(line, "Unexpected character.");
                 break;
         }
+    }
+
+    private void string() {
+        while (peek() != '"' && !isAtEnd()) {
+            if (peek() == '\n') {
+                line++;
+            }
+
+            advance();
+        }
+
+        if (isAtEnd()) {
+            Crafty.error(line, "Unterminated string.");
+            return;
+        }
+
+        // The closing ".
+        advance();
+
+        // Trim the surrounding quotes and add token.
+        addToken(STRING, source.substring(start + 1, current - 1));
     }
 
     private boolean match(char expected) {
