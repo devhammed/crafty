@@ -67,6 +67,9 @@ public class Scanner {
             case '*':
                 addToken(STAR);
                 break;
+            default:
+                Crafty.error(line, "Unexpected character.");
+                break;
         }
     }
 
