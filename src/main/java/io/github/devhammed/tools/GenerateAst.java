@@ -18,6 +18,7 @@ public class GenerateAst {
                 "Binary   : Expr left, Token operator, Expr right",
                 "Grouping : Expr expression",
                 "Literal  : Object value",
+                "Assign   : Token name, Expr value",
                 "Unary    : Token operator, Expr right",
                 "Variable : Token name"));
 
