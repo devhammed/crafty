@@ -130,10 +130,9 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
                 throw new RuntimeError(expr.operator,
                         "Operands must be two numbers or two strings.");
+            default:
+                throw new RuntimeError(expr.operator, "Invalid binary operator.");
         }
-
-        // Unreachable.
-        return null;
     }
 
     @Override
@@ -146,10 +145,9 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
                 return -(double) right;
             case BANG:
                 return !isTruthy(right);
+            default:
+                throw new RuntimeError(expr.operator, "Invalid unary operator.");
         }
-
-        // Unreachable.
-        return null;
     }
 
     @Override
