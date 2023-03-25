@@ -21,7 +21,7 @@ public class Interpreter implements Expr.Visitor<Object>, Stmt.Visitor<Void> {
 
             @Override
             public String toString() {
-                return "clock() { [native code] }";
+                return "fun clock() { [native code] }";
             }
         });
     }

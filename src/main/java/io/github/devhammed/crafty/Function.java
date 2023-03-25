@@ -35,6 +35,22 @@ public class Function implements Callable {
 
     @Override
     public String toString() {
-        return "<fn " + declaration.name.lexeme + ">";
+        StringBuilder builder = new StringBuilder();
+
+        builder.append("fun ");
+        builder.append(declaration.name.lexeme);
+        builder.append("(");
+
+        for (int i = 0, len = declaration.params.size(); i < len; i++) {
+            builder.append(declaration.params.get(i).lexeme);
+
+            if (i != len - 1) {
+                builder.append(", ");
+            }
+        }
+
+        builder.append(") { [code] }");
+
+        return builder.toString();
     }
 }
