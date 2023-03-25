@@ -18,15 +18,15 @@ public class Function implements Callable {
 
     @Override
     public Object call(Interpreter interpreter, List<Object> arguments) {
-        Environment scope = new Environment(closure);
+        Environment environment = new Environment(closure);
 
         for (int i = 0; i < declaration.params.size(); i++) {
-            scope.define(declaration.params.get(i).lexeme,
+            environment.define(declaration.params.get(i).lexeme,
                     arguments.get(i));
         }
 
         try {
-            interpreter.executeBlock(declaration.body, scope);
+            interpreter.executeBlock(declaration.body, environment);
         } catch (ReturnStatement returnStmt) {
             return returnStmt.value;
         }
