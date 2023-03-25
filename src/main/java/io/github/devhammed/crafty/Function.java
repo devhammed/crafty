@@ -26,8 +26,8 @@ public class Function implements Callable {
 
         try {
             interpreter.executeBlock(declaration.body, scope);
-        } catch (ReturnStatement returnValue) {
-            return returnValue.value;
+        } catch (ReturnStatement returnStmt) {
+            return returnStmt.value;
         }
 
         return null;
