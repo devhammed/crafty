@@ -24,7 +24,11 @@ public class Function implements Callable {
                     arguments.get(i));
         }
 
-        interpreter.executeBlock(declaration.body, scope);
+        try {
+            interpreter.executeBlock(declaration.body, scope);
+        } catch (ReturnStatement returnValue) {
+            return returnValue.value;
+        }
 
         return null;
     }
